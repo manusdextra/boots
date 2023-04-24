@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useState, FunctionComponent } from "react";
 
 interface StepProps {
   active: boolean;
   index: number;
-  handleClick: any;
+  handleClick: (id: number) => void;
 }
 
-function Step({ active, index, handleClick }: StepProps) {
+const Step: FunctionComponent<StepProps> = (props) => {
   return (
     <div className="col-auto">
       <button
-        className={active ? "bg-zinc-700" : "bg-zinc-100"}
+        className={props.active ? "bg-zinc-700" : "bg-zinc-100"}
         onClick={() => {
-          handleClick(index);
+          props.handleClick(props.index);
         }}
-        key={index}
+        key={props.index}
       ></button>
     </div>
   );
-}
+};
 
 const initialSteps = [
   false,
@@ -39,7 +39,7 @@ const initialSteps = [
   false,
 ];
 
-function Row() {
+const Row: FunctionComponent = () => {
   const [steps, setSteps] = useState(initialSteps);
 
   function toggleStep(index: number) {
@@ -60,7 +60,7 @@ function Row() {
       ))}
     </div>
   );
-}
+};
 
 function App() {
   return (

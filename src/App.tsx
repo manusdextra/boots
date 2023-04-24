@@ -8,14 +8,15 @@ interface StepProps {
 
 function Step({ active, index, handleClick }: StepProps) {
   return (
-    <li key={index}>
+    <div className="col-auto">
       <button
         className={active ? "bg-zinc-700" : "bg-zinc-100"}
         onClick={() => {
           handleClick(index);
         }}
+        key={index}
       ></button>
-    </li>
+    </div>
   );
 }
 
@@ -53,13 +54,11 @@ function Row() {
   }
 
   return (
-    <>
+    <div className="flex">
       {steps.map((active, index) => (
-        <span>
-          <Step active={active} index={index} handleClick={toggleStep} />
-        </span>
+        <Step active={active} index={index} handleClick={toggleStep} />
       ))}
-    </>
+    </div>
   );
 }
 
@@ -68,7 +67,14 @@ function App() {
     <>
       <div className="grid grid-cols-3 grid-rows-3 w-screen h-screen">
         <h1 className="col-start-2 row-start-1 text-center">Boots and Cats</h1>
-        <div className="col-span-full text-center">
+        <div className="row-start-2 row-span-full col-start-1 col-span-full">
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
           <Row />
         </div>
       </div>

@@ -7,9 +7,11 @@ interface StepProps {
 }
 
 const Step: FunctionComponent<StepProps> = (props) => {
+  const baseColour = props.index % 4 == 0 ? "bg-zinc-600" : "bg-zinc-700";
+  const colour = props.active ? "bg-zinc-100" : baseColour;
   return (
     <button
-      className={props.active ? "bg-zinc-100" : "bg-zinc-700"}
+      className={colour}
       onClick={() => {
         props.handleClick(props.index);
       }}
@@ -52,7 +54,7 @@ const Row: FunctionComponent = () => {
   }
 
   return (
-    <div className="flex">
+    <div className="flex justify-around">
       {steps.map((active, index) => (
         <Step active={active} index={index} handleClick={toggleStep} />
       ))}

@@ -8,15 +8,13 @@ interface StepProps {
 
 const Step: FunctionComponent<StepProps> = (props) => {
   return (
-    <div className="col-auto">
-      <button
-        className={props.active ? "bg-zinc-700" : "bg-zinc-100"}
-        onClick={() => {
-          props.handleClick(props.index);
-        }}
-        key={props.index}
-      ></button>
-    </div>
+    <button
+      className={props.active ? "bg-zinc-100" : "bg-zinc-700"}
+      onClick={() => {
+        props.handleClick(props.index);
+      }}
+      key={props.index}
+    ></button>
   );
 };
 

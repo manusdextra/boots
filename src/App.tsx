@@ -3,7 +3,7 @@ import { useState, FunctionComponent } from "react";
 interface StepProps {
   active: boolean;
   index: number;
-  handleClick: (id: number) => void;
+  handleClick: (index: number) => void;
 }
 
 const Step: FunctionComponent<StepProps> = (props) => {
@@ -39,7 +39,7 @@ const initialSteps = [
   false,
 ];
 
-const Row: FunctionComponent = () => {
+const Instrument: FunctionComponent<InstrumentProps> = (props) => {
   const [steps, setSteps] = useState(initialSteps);
 
   function toggleStep(index: number) {
@@ -54,7 +54,13 @@ const Row: FunctionComponent = () => {
   }
 
   return (
-    <div className="flex justify-around">
+    <div id={props.name} className="flex justify-around">
+      <button
+        className={props.mute ? "bg-red-500" : "bg-red-50"}
+        onClick={() => props.setMute(!props.mute)}
+      >
+        {props.name}
+      </button>
       {steps.map((active, index) => (
         <Step active={active} index={index} handleClick={toggleStep} />
       ))}
@@ -62,20 +68,33 @@ const Row: FunctionComponent = () => {
   );
 };
 
+interface InstrumentProps {
+  name: string;
+  mute: boolean;
+  setMute: (mute: boolean) => void;
+}
+
 function App() {
+  const instrumentList = ["BD", "CH", "OH", "SD"];
+  const instruments: Array<InstrumentProps> = instrumentList.map(
+    (name: string) => {
+      const [mute, setMute] = useState(false);
+      return {
+        name: name,
+        mute: mute,
+        setMute: setMute,
+      };
+    }
+  );
+
   return (
     <>
       <div className="grid grid-cols-3 grid-rows-3 w-screen h-screen">
         <h1 className="col-start-2 row-start-1 text-center">Boots and Cats</h1>
         <div className="row-start-2 row-span-full col-start-1 col-span-full">
-          <Row />
-          <Row />
-          <Row />
-          <Row />
-          <Row />
-          <Row />
-          <Row />
-          <Row />
+          {instruments.map((instrument) => (
+            <Instrument {...instrument} />
+          ))}
         </div>
       </div>
     </>

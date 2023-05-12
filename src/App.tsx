@@ -87,7 +87,7 @@ function App() {
     <>
       <div className="grid grid-cols-3 grid-rows-3 w-screen h-screen">
         <h1 className="col-start-2 row-start-1 text-center">Boots and Cats</h1>
-        <div className="row-start-2 row-span-full col-start-1 col-span-full">
+        <div className="row-start-2 row-span-full col-start-2 col-end-3 col-span-full">
           {instruments.map((instrument) => (
             <Instrument {...instrument} />
           ))}

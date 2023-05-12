@@ -56,7 +56,9 @@ const Instrument: FunctionComponent<InstrumentProps> = (props) => {
   return (
     <div id={props.name} className="flex justify-around">
       <button
-        className={props.mute ? "bg-red-500" : "bg-red-50"}
+        className={`${
+          props.mute ? "bg-red-900" : "bg-green-500"
+        } text-slate-900`}
         onClick={() => props.setMute(!props.mute)}
       >
         {props.name}
@@ -75,7 +77,7 @@ interface InstrumentProps {
 }
 
 function App() {
-  const instrumentList = ["BD", "CH", "OH", "SD"];
+  const instrumentList = ["SD", "OH", "CH", "BD"];
   const instruments: Array<InstrumentProps> = instrumentList.map(
     (name: string) => {
       const [mute, setMute] = useState(false);

@@ -43,13 +43,7 @@ const Instrument: FunctionComponent<InstrumentProps> = (props) => {
   const [steps, setSteps] = useState(initialSteps);
 
   function toggleStep(index: number) {
-    const updatedSteps = steps.map((step, i) => {
-      if (index === i) {
-        return !step;
-      } else {
-        return step;
-      }
-    });
+    const updatedSteps = steps.map((step, i) => (index === i ? !step : step));
     setSteps(updatedSteps);
   }
 

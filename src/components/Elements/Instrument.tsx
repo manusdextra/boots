@@ -22,13 +22,14 @@ const initialSteps = [
 
 export interface InstrumentProps {
     name: string;
+    path: string;
     mute: boolean;
     setMute: (mute: boolean) => void;
 }
 
 export const Instrument: FunctionComponent<InstrumentProps> = (props) => {
     const [steps, setSteps] = useState(initialSteps);
-
+    const audio = new Audio(props.path)
     function toggleStep(index: number) {
         const updatedSteps = steps.map((step, i) => (index === i ? !step : step));
         setSteps(updatedSteps);
@@ -46,6 +47,9 @@ export const Instrument: FunctionComponent<InstrumentProps> = (props) => {
             {steps.map((active, index) => (
                 <Step active={active} index={index} handleClick={toggleStep} />
             ))}
+            <button onClick={() => {audio.play()}}>
+                Play
+            </button>
         </div>
     );
 };

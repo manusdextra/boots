@@ -9,6 +9,7 @@ function App() {
             const [mute, setMute] = useState(false);
             return {
                 name: name,
+                path: `../../../${name}.wav`,
                 mute: mute,
                 setMute: setMute,
             };

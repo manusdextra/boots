@@ -1,19 +1,10 @@
-type ContainerLayoutProps = {
-    title: string;
-    children: React.ReactNode;
-};
+import { FunctionComponent } from "react"
 
-export const Box = ({ title, children }: ContainerLayoutProps) => {
-
+export const Box: FunctionComponent<{children: React.ReactNode}> = ({children}) => {
     return (
         <>
             <div className="flex flex-col justify-start w-screen h-screen">
-                <div className="flex flex-row justify-center">
-                    <h1 className="p-12 text-center">{title}</h1>
-                </div>
-                <div className="">
-                    {children}
-                </div>
+                {children}
             </div>
         </>
     )

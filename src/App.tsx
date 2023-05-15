@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box } from "./components/Layout/Box";
 import { Instrument, InstrumentProps } from "./components/Elements/Instrument";
+import { Heading } from "./components/Layout/Heading";
 
 function App() {
     const instrumentList = ["SD", "OH", "CH", "BD"];
@@ -18,7 +19,8 @@ function App() {
 
     return (
         <>
-            <Box title="Boots and Cats" children={instruments.map((instrument) => <Instrument {...instrument} />)} />
+            <Heading title="Boots and Cats" />
+            <Box children={instruments.map((instrument) => <Instrument {...instrument} />)} />
         </>
     );
 }

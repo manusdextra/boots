@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box } from "./components/Layout/Center";
+import { Box } from "./components/Layout/Box";
 import { Instrument, InstrumentProps } from "./components/Elements/Instrument";
 
 function App() {
@@ -17,7 +17,9 @@ function App() {
     );
 
     return (
-        <Box title="Boots and Cats" children={instruments.map((instrument) => <Instrument {...instrument} />)} />
+        <>
+            <Box title="Boots and Cats" children={instruments.map((instrument) => <Instrument {...instrument} />)} />
+        </>
     );
 }
 

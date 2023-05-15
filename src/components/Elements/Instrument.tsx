@@ -2,22 +2,10 @@ import { FunctionComponent, useState } from "react";
 import { Step } from "./Step";
 
 const initialSteps = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
+    false, false, false, false,
+    false, false, false, false,
+    false, false, false, false,
+    false, false, false, false,
 ];
 
 export interface InstrumentProps {
@@ -37,22 +25,22 @@ export const Instrument: FunctionComponent<InstrumentProps> = (props) => {
 
     return (
         <div className="flex flex-row justify-center">
-            <div className="flex flex-row justify-end">
+            <div className="flex flex-row justify-end w-full">
                 <p className="p-3"> {props.name} </p>
                 <button
-                    className={`flex-basis-1 flex-basis-12 ${props.mute ? "bg-red-900" : "bg-green-500"} text-slate-900`}
+                    className={`py-0 p-1 flex-basis-1 flex-basis-12 ${props.mute ? "bg-red-900" : "bg-green-500"} text-slate-900`}
                     onClick={() => props.setMute(!props.mute)}
                 >
                     mute
                 </button>
             </div>
-                <div id={props.name} className="flex self-center flex-row">
-                    {steps.map((active, index) => (
-                        <Step active={active} index={index} handleClick={toggleStep} />
-                    ))}
-                </div>
-            <div className="flex flex-row justify-start">
-                <button onClick={() => { audio.play() }}>
+            <div id={props.name} className="flex flex-row">
+                {steps.map((active, index) => (
+                    <Step active={active} index={index} handleClick={toggleStep} />
+                ))}
+            </div>
+            <div className="flex flex-row justify-start w-full">
+                <button className="py-2 p-1" onClick={() => { audio.play() }}>
                     Play
                 </button>
             </div>

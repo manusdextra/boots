@@ -4,8 +4,7 @@ import { Instrument, InstrumentProps } from "./components/Elements/Instrument";
 import { Heading } from "./components/Layout/Heading";
 
 function App() {
-    const instrumentList = ["SD", "OH", "CH", "BD"];
-    const instruments: Array<InstrumentProps> = instrumentList.map(
+    const instruments: Array<InstrumentProps> = ["SD", "OH", "CH", "BD"].map(
         (name: string) => {
             const [mute, setMute] = useState(false);
             return {

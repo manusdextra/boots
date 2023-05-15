@@ -17,7 +17,7 @@ export const Step: FunctionComponent<StepProps> = (props) => {
                 props.handleClick(props.index);
             }}
             key={props.index}
-        ></button>
+        >.</button>
     );
 };
 

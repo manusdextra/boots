@@ -7,11 +7,11 @@ export const Box = ({ title, children }: ContainerLayoutProps) => {
 
     return (
         <>
-            <div className="grid grid-cols-3 grid-rows-3 w-screen h-screen">
-                <div className="col-start-2 row-start-1 ">
-                    <h1 className="text-center">{title}</h1>
+            <div className="flex flex-col justify-start w-screen h-screen">
+                <div className="flex flex-row justify-center">
+                    <h1 className="p-12 text-center">{title}</h1>
                 </div>
-                <div className="row-start-2 row-span-full col-start-2 col-end-3 col-span-full">
+                <div className="">
                     {children}
                 </div>
             </div>

@@ -36,20 +36,26 @@ export const Instrument: FunctionComponent<InstrumentProps> = (props) => {
     }
 
     return (
-        <div id={props.name} className="flex justify-around">
-            <button
-                className={`flex-basis-12 ${props.mute ? "bg-red-900" : "bg-green-500"
-                    } text-slate-900`}
-                onClick={() => props.setMute(!props.mute)}
-            >
-                {props.name}
-            </button>
-            {steps.map((active, index) => (
-                <Step active={active} index={index} handleClick={toggleStep} />
-            ))}
-            <button onClick={() => {audio.play()}}>
-                Play
-            </button>
+        <div className="flex flex-row justify-center">
+            <div className="flex flex-row justify-end">
+                <p className="p-3"> {props.name} </p>
+                <button
+                    className={`flex-basis-1 flex-basis-12 ${props.mute ? "bg-red-900" : "bg-green-500"} text-slate-900`}
+                    onClick={() => props.setMute(!props.mute)}
+                >
+                    mute
+                </button>
+            </div>
+                <div id={props.name} className="flex self-center flex-row">
+                    {steps.map((active, index) => (
+                        <Step active={active} index={index} handleClick={toggleStep} />
+                    ))}
+                </div>
+            <div className="flex flex-row justify-start">
+                <button onClick={() => { audio.play() }}>
+                    Play
+                </button>
+            </div>
         </div>
     );
 };

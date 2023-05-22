@@ -40,7 +40,7 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
       </div>
       <div id={name} className="flex flex-row">
         {steps.map((active, index) => (
-          <Step active={active} index={index} handleClick={handleStepToggled} />
+          <Step active={active} index={index} key={index} handleClick={handleStepToggled} />
         ))}
       </div>
       <div className="flex flex-row justify-start w-full">

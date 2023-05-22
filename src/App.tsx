@@ -5,12 +5,11 @@ import { useAppSelector } from "./hooks";
 
 function App() {
   const instruments = useAppSelector(state => Object.values(state.instruments))
-  console.log(instruments)
 
   return (
     <>
       <Heading title="Boots and Cats" />
-      <Box children={instruments.map((instrument) => <Instrument {...instrument} />)} />
+      <Box children={instruments.map((instrument, index) => <Instrument {...instrument} key={index}/>)} />
     </>
   );
 }

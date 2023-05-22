@@ -28,11 +28,11 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
   }
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center py-1 ">
       <div className="flex flex-row justify-end w-full">
         <p className="p-3"> {name} </p>
         <button
-          className={`py-0 p-1 flex-basis-1 flex-basis-12 ${mute ? "bg-red-900" : "bg-green-500"} text-slate-900`}
+          className={`rounded-sm py-0 p-1 flex-basis-1 ${mute ? "bg-red-600 text-slate-50" : "bg-green-500 text-slate-900"} `}
           onClick={muteInstrument}
         >
           mute

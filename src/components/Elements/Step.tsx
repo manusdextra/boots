@@ -12,12 +12,12 @@ export const Step: FunctionComponent<StepProps> = (props) => {
   const colour = props.active ? "bg-zinc-100" : baseColour;
   return (
     <button
-      className={`rounded-lg px-2 p-1 ${colour}`}
+      className={`rounded-sm border-1 border-zinc-700 px-2 mx-[1px] ${colour}`}
       onClick={() => {
         props.handleClick(props.index);
       }}
       key={props.index}
-    >.</button>
+    ></button>
   );
 };
 

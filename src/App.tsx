@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Heading title="Boots and Cats" />
-      <Box children={instruments.map((instrument, index) => <Instrument {...instrument} key={index}/>)} />
+      <Box children={instruments.map((instrument, index) => <Instrument {...instrument} key={index} />)} />
     </>
   );
 }

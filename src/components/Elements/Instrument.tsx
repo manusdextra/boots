@@ -16,7 +16,7 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
   mute,
 }) => {
   const steps = useAppSelector((state) => state.instruments[name].sequence)
-  const audio = new Audio(path)
+  const audioElement = new Audio(path)
   const dispatch = useAppDispatch()
 
   function handleStepToggled(index: number) {
@@ -25,6 +25,10 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
 
   function muteInstrument() {
     dispatch(instrumentMuted(name))
+  }
+
+  function handlePlaySample() {
+    audioElement.play()
   }
 
   return (
@@ -44,7 +48,7 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
         ))}
       </div>
       <div className="flex flex-row justify-start w-full">
-        <button className="py-2 p-1" onClick={() => { audio.play() }}>
+        <button className="py-2 p-1" onClick={handlePlaySample}>
           Play
         </button>
       </div>

@@ -9,10 +9,10 @@ interface StepProps {
 
 export const Step: FunctionComponent<StepProps> = (props) => {
   const baseColour = props.index % 4 == 0 ? "bg-zinc-600" : "bg-zinc-700";
-  const colour = props.active ? "bg-zinc-100" : baseColour;
+  const colour = props.active ? "bg-zinc-100 ring-zinc-900 ring-2 ring-inset" : baseColour;
   return (
     <button
-      className={`rounded-sm border-1 border-zinc-700 px-2 mx-[1px] ${colour}`}
+      className={`rounded-sm px-2 mx-[1px] ${colour}`}
       onClick={() => {
         props.handleClick(props.index);
       }}

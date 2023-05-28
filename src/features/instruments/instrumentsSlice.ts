@@ -38,6 +38,11 @@ const instrumentsSlice = createSlice({
       const step = action.payload.step
       state[instrument].sequence[step] = !state[instrument].sequence[step]
     },
+    sequenceReset: (state: InstrumentsState) => {
+      Object.keys(state).map(instrument => {
+        state[instrument] = { ...state[instrument], sequence: initialSequence }
+      })
+    },
     instrumentMuted(state: InstrumentsState, action: PayloadAction<string>) {
       const instrument = action.payload
       state[instrument].mute = !state[instrument].mute
@@ -45,6 +50,6 @@ const instrumentsSlice = createSlice({
   },
 })
 
-export const { stepToggled, instrumentMuted } = instrumentsSlice.actions
+export const { stepToggled, sequenceReset, instrumentMuted } = instrumentsSlice.actions
 
 export default instrumentsSlice.reducer

@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { Step } from "./Step";
 import { stepToggled, instrumentMuted } from "../../features/instruments/instrumentsSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import * as Tone from 'tone';
 
 export interface InstrumentProps {
   name: string;
@@ -16,11 +17,12 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
   mute,
 }) => {
   const steps = useAppSelector((state) => state.instruments[name].sequence)
-  const audioElement = new Audio(path)
+  const sample = new Tone.Player(path).toDestination()
+  sample.autostart = false
   const dispatch = useAppDispatch()
 
   function handleStepToggled(index: number) {
-    dispatch(stepToggled({instrument: name, step: index}))
+    dispatch(stepToggled({ instrument: name, step: index }))
   }
 
   function muteInstrument() {
@@ -28,7 +30,7 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
   }
 
   function handlePlaySample() {
-    audioElement.play()
+    sample.start()
   }
 
   return (

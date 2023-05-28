@@ -5,6 +5,7 @@ import { sequenceReset } from "./features/instruments/instrumentsSlice";
 import { Heading } from "./components/Layout/Heading";
 import { useAppSelector } from "./hooks";
 import { Footer } from "./components/Layout/Footer";
+import { ThreeColumns } from "./components/Layout/ThreeColumns";
 
 function App() {
   const instruments = useAppSelector(state => Object.values(state.instruments))
@@ -16,11 +17,15 @@ function App() {
 
   return (
     <>
-      <Heading title="Boots and Cats" />
-      <Box children={instruments.map((instrument, index) => <Instrument {...instrument} key={index} />)} />
-      <Footer>
-      <button onClick={handleInstrumentsReset}>Reset Sequencer</button>
-    </Footer>
+      <Box>
+        <Heading title="Boots and Cats" />
+        {instruments.map((instrument, index) => <Instrument {...instrument} key={index} />)}
+        <ThreeColumns centre={
+          <button className="bg-zinc-300 p-4" onClick={handleInstrumentsReset}>Reset Sequencer</button>
+        } />
+        <Footer>
+        </Footer>
+      </Box>
     </>
   );
 }

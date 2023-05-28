@@ -3,6 +3,7 @@ import { Step } from "./Step";
 import { stepToggled, instrumentMuted } from "../../features/instruments/instrumentsSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import * as Tone from 'tone';
+import { ThreeColumns } from "../Layout/ThreeColumns";
 
 export interface InstrumentProps {
   name: string;
@@ -34,8 +35,8 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
   }
 
   return (
-    <div className="flex flex-row justify-center py-1 ">
-      <div className="flex flex-row justify-end w-full">
+    <ThreeColumns left={
+      <>
         <p className="p-3"> {name} </p>
         <button
           className={`rounded-sm py-0 p-1 flex-basis-1 ${mute ? "bg-red-600 text-slate-50" : "bg-green-500 text-slate-900"} `}
@@ -43,17 +44,15 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
         >
           mute
         </button>
-      </div>
-      <div id={name} className="flex flex-row">
-        {steps.map((active, index) => (
+      </>
+    } centre={
+        steps.map((active: boolean, index: number) => (
           <Step active={active} index={index} key={index} handleClick={handleStepToggled} />
-        ))}
-      </div>
-      <div className="flex flex-row justify-start w-full">
-        <button className="py-2 p-1" onClick={handlePlaySample}>
-          Play
-        </button>
-      </div>
-    </div>
+        ))
+    } right={
+      <button className="py-2 p-1" onClick={handlePlaySample}>
+        Play
+      </button>
+    } />
   );
 };

@@ -19,10 +19,13 @@ function App() {
     <>
       <Box>
         <Heading title="Boots and Cats" />
-        {instruments.map((instrument, index) => <Instrument {...instrument} key={index} />)}
-        <ThreeColumns centre={
-          <button className="bg-zinc-300 p-4" onClick={handleInstrumentsReset}>Reset Sequencer</button>
-        } />
+        <div className="p-4">
+
+          {instruments.map((instrument) => <Instrument {...instrument} key={instrument.name} />)}
+          <ThreeColumns centre={
+            <button className="bg-zinc-300 p-4" onClick={handleInstrumentsReset}>Reset Sequencer</button>
+          } />
+        </div>
         <Footer>
         </Footer>
       </Box>

@@ -46,9 +46,9 @@ export const Instrument: FunctionComponent<InstrumentProps> = ({
         </button>
       </>
     } centre={
-        steps.map((active: boolean, index: number) => (
-          <Step active={active} index={index} key={index} handleClick={handleStepToggled} />
-        ))
+      steps.map((active: boolean, index: number) => (
+        <Step active={active} index={index} key={index} handleClick={handleStepToggled} />
+      ))
     } right={
       <button className="py-2 p-1" onClick={handlePlaySample}>
         Play

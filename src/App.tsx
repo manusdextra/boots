@@ -6,13 +6,26 @@ import { Heading } from "./components/Layout/Heading";
 import { useAppSelector } from "./hooks";
 import { Footer } from "./components/Layout/Footer";
 import { ThreeColumns } from "./components/Layout/ThreeColumns";
+import { Playhead } from "./components/Elements/Playhead";
+import { playStarted, bpmChanged } from "./features/playhead/playheadSlice";
 
 function App() {
   const instruments = useAppSelector(state => Object.values(state.instruments))
+  const bpm = useAppSelector(state => state.playhead.bpm)
+
   const dispatch = useAppDispatch()
 
   function handleInstrumentsReset() {
     dispatch(sequenceReset())
+  }
+
+  function handlePlayStarted() {
+    dispatch(playStarted())
+  }
+
+  function handleBpmChange(newBpm: string) {
+    const integer = Number(newBpm)
+    dispatch(bpmChanged(integer))
   }
 
   return (
@@ -23,7 +36,14 @@ function App() {
 
           {instruments.map((instrument) => <Instrument {...instrument} key={instrument.name} />)}
           <ThreeColumns centre={
-            <button className="bg-zinc-300 p-4" onClick={handleInstrumentsReset}>Reset Sequencer</button>
+            <Playhead />
+          } />
+          <ThreeColumns centre={
+            <>
+              <button className="bg-zinc-300 p-2 m-2" onClick={handlePlayStarted}>Play/Pause</button>
+              <button className="bg-zinc-300 p-2 m-2" onClick={handleInstrumentsReset}>Reset</button>
+              <input name="BPM" type="range" min="60" max="180" step="1" value={bpm} onChange={e => handleBpmChange(e.target.value)} />
+            </>
           } />
         </div>
         <Footer>

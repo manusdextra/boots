@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import instrumentsReducer from "./features/instruments/instrumentsSlice"
+import playheadReducer from "./features/playhead/playheadSlice"
 
 export const store = configureStore({
   reducer: {
-    instruments: instrumentsReducer
+    instruments: instrumentsReducer,
+    playhead: playheadReducer,
   },
 })
 
